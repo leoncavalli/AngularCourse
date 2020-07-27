@@ -1,0 +1,44 @@
+<!-- Class Binding   -->
+
+<div class="p-3">
+    <div class="bg-primary text-white m-2 p-2">
+        There are {{model.getProducts().length}} products in the repository.
+    </div>
+    <div>
+        <h2>{{product.name}}</h2>
+        <h2 [textContent]="product.name"></h2>
+    </div>
+    <div [class]="getClasses(1)">
+        <span [style.color]="color">1</span> {{model.getProductsbyId(1).name}} {{model.getProductsbyId(1).price}}
+
+    </div>
+    <div [class]="getClasses(2)">
+        <span>2</span> {{model.getProductsbyId(2).name}} {{model.getProductsbyId(2).price}}
+
+    </div>
+
+    <button [class.disabled]="false" class="btn btn-primary">Submit</button>
+</div>
+<div class="m-2 p-2 " [ngClass]="getClassMap(3)">
+    <span>3</span> {{model.getProductsbyId(3).name}} {{model.getProductsbyId(3).price}}
+
+</div>
+<div class="m-2 p-2 " [ngClass]="getClassMap(4)">
+    <span>4</span> {{model.getProductsbyId(4).name}} {{model.getProductsbyId(4).price}}
+
+</div>
+<!-- Event Binding  -->
+<div>
+    <button name="button1" class="btn btn-primary" (click)="alert($event)">Alert Button</button>
+    <button name="button2" class="btn btn-primary" (click)="alert($event)">Alert Button</button>
+</div>
+<!-- Keyup Event -->
+<div class="m-2 p-2">
+    <input #email class="input-group-item" (keyup.enter)="onkeyUp(email.value)">
+</div>
+
+<!-- Two Way Binding -->
+<div class="m-2 p-2">
+    <input [(ngModel)]="mail" class="input-group-item" (keyup.enter)="onkeyUp2()">
+
+</div>
