@@ -40,5 +40,9 @@ export class ProductComponent {
   onkeyUp2(){
       console.log(this.mail)
   }
+
+  today:number=Date.now();
+  
+  longsentence:string="Lorem ipsum dolor sit amet consectatur elipdis a sciping elit a consectatur!"
 }
 

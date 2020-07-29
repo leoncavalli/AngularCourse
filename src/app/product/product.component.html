@@ -42,3 +42,13 @@
     <input [(ngModel)]="mail" class="input-group-item" (keyup.enter)="onkeyUp2()">
 
 </div>
+
+<!-- Pipe Ops -->
+
+<h3>{{today}}</h3>
+<h3>{{today|date}}</h3>
+
+<!-- Custom Pipes -->
+
+<h4>{{longsentence}}</h4>
+<h4>{{longsentence|summary}}</h4>
