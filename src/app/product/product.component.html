@@ -1,54 +1,144 @@
 <!-- Class Binding   -->
-
-<div class="p-3">
-    <div class="bg-primary text-white m-2 p-2">
-        There are {{model.getProducts().length}} products in the repository.
-    </div>
+<div id="classbinding" class="p-5">
+    <h1>CLASS BINDING</h1>
     <div>
-        <h2>{{product.name}}</h2>
-        <h2 [textContent]="product.name"></h2>
+        <div class="bg-primary text-white m-2 p-2">
+            There are {{model.getProducts().length}} products in the repository.
+        </div>
+        <div>
+            <h2>{{product.name}}</h2>
+            <h2 [textContent]="product.name"></h2>
+        </div>
+        <div [class]="getClasses(1)">
+            <span [style.color]="color">1</span> {{model.getProductsbyId(1).name}} {{model.getProductsbyId(1).price}}
+
+        </div>
+        <div [class]="getClasses(2)">
+            <span>2</span> {{model.getProductsbyId(2).name}} {{model.getProductsbyId(2).price}}
+
+        </div>
+
+        <button [class.disabled]="false" class="btn btn-primary">Submit</button>
     </div>
-    <div [class]="getClasses(1)">
-        <span [style.color]="color">1</span> {{model.getProductsbyId(1).name}} {{model.getProductsbyId(1).price}}
+    <div [ngClass]="getClassMap(3)">
+        <span>3</span> {{model.getProductsbyId(3).name}} {{model.getProductsbyId(3).price}}
 
     </div>
-    <div [class]="getClasses(2)">
-        <span>2</span> {{model.getProductsbyId(2).name}} {{model.getProductsbyId(2).price}}
+    <div [ngClass]="getClassMap(4)">
+        <span>4</span> {{model.getProductsbyId(4).name}} {{model.getProductsbyId(4).price}}
 
     </div>
-
-    <button [class.disabled]="false" class="btn btn-primary">Submit</button>
-</div>
-<div class="m-2 p-2 " [ngClass]="getClassMap(3)">
-    <span>3</span> {{model.getProductsbyId(3).name}} {{model.getProductsbyId(3).price}}
-
-</div>
-<div class="m-2 p-2 " [ngClass]="getClassMap(4)">
-    <span>4</span> {{model.getProductsbyId(4).name}} {{model.getProductsbyId(4).price}}
-
 </div>
 <!-- Event Binding  -->
-<div>
-    <button name="button1" class="btn btn-primary" (click)="alert($event)">Alert Button</button>
-    <button name="button2" class="btn btn-primary" (click)="alert($event)">Alert Button</button>
+<div id="eventbinding" class="p-5">
+    <h1>EVENT BINDING</h1>
+    <div>
+        <button name="button1" class="btn btn-primary" (click)="alert($event)">Alert Button</button>
+        <button name="button2" class="btn btn-primary" (click)="alert($event)">Alert Button</button>
+    </div>
 </div>
+
 <!-- Keyup Event -->
-<div class="m-2 p-2">
-    <input #email class="input-group-item" (keyup.enter)="onkeyUp(email.value)">
+<div id="keyupevent" class="p-5">
+    <h1>KEYUP EVENT</h1>
+    <div>
+        <input #email class="input-group-item" (keyup.enter)="onkeyUp(email.value)">
+    </div>
 </div>
 
 <!-- Two Way Binding -->
-<div class="m-2 p-2">
-    <input [(ngModel)]="mail" class="input-group-item" (keyup.enter)="onkeyUp2()">
+<div id="twowaybinding" class="p-5">
+    <h1>TWO WAY BINDING</h1>
+    <div>
+        <input [(ngModel)]="mail" class="input-group-item" (keyup.enter)="onkeyUp2()">
 
+    </div>
 </div>
 
 <!-- Pipe Ops -->
+<div id="pipeops" class="p-5">
+    <h1>PIPE OPS</h1>
+    <h3>{{today}}</h3>
+    <h3>{{today|date}}</h3>
+    <!-- Custom Pipes -->
 
-<h3>{{today}}</h3>
-<h3>{{today|date}}</h3>
+    <h4>{{longsentence}}</h4>
+    <h4>{{longsentence|summary}}</h4>
+</div>
 
-<!-- Custom Pipes -->
+<!-- NgIf -->
 
-<h4>{{longsentence}}</h4>
-<h4>{{longsentence|summary}}</h4>
+<div id="ngif" class="p-5">
+    <h1>NG IF OPERATOR</h1>
+    <h4 *ngIf="model.getProducts().length>3">There are more than 3 products in repository.</h4>
+    <h4 *ngIf="model.getProducts().length<6">There are less than 6 products in repository. </h4>
+    <h4 *ngIf="model.getProducts().length===0">There is no product in repo.</h4>
+    <h4>There are {{model.getProducts().length}} products. </h4>
+
+</div>
+
+<!-- NgSwitch -->
+
+<div class="ngswitch" class="p-5">
+    <h1>NG SWITCH OPERATOR</h1>
+    <div [ngSwitch]="model.getProducts().length">
+        <h4 *ngSwitchCase="0">There is no products in repository.</h4>
+        <h4 *ngSwitchCase="1">There is 1 product in repository.</h4>
+        <h4 *ngSwitchCase="2">There are 2 products in repository.</h4>
+        <h4 *ngSwitchCase="3">There are 3 products in repository.</h4>
+        <h4 *ngSwitchCase="4">There are 4 products in repository.</h4>
+        <h4 *ngSwitchCase="5">There are 5 products in repository.</h4>
+    </div>
+    <div [ngSwitch]="model.getProductsbyId(5).name">
+        <h4 *ngSwitchCase="'LG'">It is LG.</h4>
+        <h4 *ngSwitchCase="'Samsung'">It is LG.</h4>
+        <h4 *ngSwitchCase="'Oppo'">It is LG.</h4>
+        <h4 *ngSwitchCase="'Apple'">It is Apple.</h4>
+        <h4 *ngSwitchCase="'Xiaomi'">It is LG.</h4>
+        <h4 *ngSwitchDefault>Look</h4>
+    </div>
+</div>
+
+<!-- NgFor -->
+<div id="ngfor" class="p-5">
+    <h1>NG IF OPERATOR</h1>
+    <ul>
+        <li class="list-group-item" *ngFor="let product of modelNames();index as i">
+            {{i+1}}-{{product}}
+        </li>
+    </ul>
+</div>
+
+<!-- Change Detection -->
+
+<div id="changedetection" class="p-5">
+    <h1>CHANGE DETECTION</h1>
+    <ul>
+        <li class="list-group-item" *ngFor="let item of model.getProducts()">
+            {{item.name}}
+            <button class="btn btn-danger" (click)="deleteProduct(item)">Delete</button>
+        </li>
+    </ul>
+    <button class="btn btn-primary" (click)="addProduct()">Add Product</button>
+</div>
+
+<!-- ngTemplate Outlet -->
+<div id="ngtemplateoutlet" class="p-5">
+    <h1>NG TEMPLATE OUTLET</h1>
+    <ng-template #productlist let-products="products">
+        <ul>
+            <li class="list-group-item" *ngFor="let item of products">
+                {{item.name}}
+            </li>
+        </ul>
+    </ng-template>
+    <ng-template [ngTemplateOutlet]="productlist" [ngTemplateOutletContext]="{products:model.getProducts()}"></ng-template>
+
+</div>
+
+<!-- Custom Directives -->
+
+<div class="customdirective" class="p-5">
+    <h1>CUSTOM DIRECTIVES</h1>
+    <input type="text" appInputEmail>
+</div>

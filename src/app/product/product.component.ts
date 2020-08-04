@@ -24,6 +24,12 @@ export class ProductComponent {
     }
 
   }
+  modelNames():Array<string>  {
+    let array:Array<string>=[];
+    let products=this.model.getProducts();
+    products.forEach(p=>array.push(p.name))
+    return array;
+  }
   color:string="red";
 
   alert($event):void{
@@ -43,6 +49,14 @@ export class ProductComponent {
 
   today:number=Date.now();
   
-  longsentence:string="Lorem ipsum dolor sit amet consectatur elipdis a sciping elit a consectatur!"
+  longsentence:string="Lorem ipsum dolor sit amet consectatur elipdis a sciping elit a consectatur!";
+
+
+  addProduct(){
+    this.model.addProduct(new Product(6,"Huawei","China Product.","6.jpg",60000))
+  }
+  deleteProduct(product:Product){
+    this.model.deleteProduct(product);
+  }
 }
 
