@@ -19,6 +19,8 @@ export class AdminProductsComponent {
     this.products=this.model.getProducts();
   }
 
+  // Classic Form Operations
+
   getSelectedProduct(product:Product):boolean{
     return product==this.selectedProduct;
   }
